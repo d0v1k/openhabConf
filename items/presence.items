@@ -1,0 +1,13 @@
+//Presence
+Location        locationLM      "Location"              {channel="gpstracker:tracker:LM:lastLocation"}
+DateTime        lastSeenLM      "Last seen"             {channel="gpstracker:tracker:LM:lastReport"}
+Number          batteryLM       "Battery level"         {channel="gpstracker:tracker:LM:batteryLevel"}
+Number:Length   accuracyLM      "GPS Accuracy [%d m]"   {channel="gpstracker:tracker:LM:gpsAccuracy"}
+Number          homeDistanceLM  "Distance From Home"    {channel="gpstracker:tracker:LM:homeDistance"}
+Number          workDistanceLM  "Distance From Work"    {channel="gpstracker:tracker:LM:workDistance"}
+
+//linking switch item to regionTrigger channel. assuming the Home distance channel is defined in the binding config (see above)
+Switch atHomeLM "Home presence" {channel="gpstracker:tracker:LM:regionTrigger" [profile="gpstracker:trigger-geofence", regionName="Home"]}
+
+//another switch for work region. assuming the OTWork is defined in OwnTracks application (no distance channel is needed like for Home)
+Switch atWorkLM "Work presence" {channel="gpstracker:tracker:LM:regionTrigger" [profile="gpstracker:trigger-geofence", regionName="Work"]}

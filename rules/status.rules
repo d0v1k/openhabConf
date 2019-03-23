@@ -1,0 +1,19 @@
+val sonoff_device_ids = newArrayList("sonoffs")
+val actions = getActions("mqtt","mqtt:broker:myMQTTBroker")
+
+rule "Update Sonoff Status"
+
+when
+    Time cron "0 0 0/1 1/1 * ? *" or
+    System started or
+    Item UpdateStatus received command ON 
+
+then
+	logInfo("info","Update Manually")
+    for (String device_id : sonoff_device_ids) {
+        logDebug("status.rules", "Updating Status Device: " + device_id )
+        actions.publishMQTT("cmnd/" + device_id + "/STATUS", "2")
+	actions.publishMQTT("cmnd/" + device_id + "/STATUS", "5")	
+    }
+    
+end

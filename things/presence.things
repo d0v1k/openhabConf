@@ -1,0 +1,18 @@
+//tracker definition with extra distance channel
+Thing gpstracker:tracker:LM   "Dovik tracker" [trackerId="LM"] {
+    Channels:
+            Type regionDistance : homeDistance "Distance from Home" [
+                regionName="Home",
+                regionCenterLocation="-24.623806,25.909256",
+                regionRadius=50,
+                accuracyThreshold=30
+            ]
+
+            Type regionDistance : workDistance "Distance from Work" [
+                regionName="Work",
+                regionCenterLocation="-24.626216,25.869401",
+                regionRadius=50,
+                accuracyThreshold=30
+            ]
+
+}

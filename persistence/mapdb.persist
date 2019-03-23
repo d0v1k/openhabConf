@@ -1,0 +1,11 @@
+Strategies {
+    everyHour : "0 0 * * * ?"
+    everyDay  : "0 0 0 * * ?"
+
+    default = everyChange
+}
+
+Items {
+    // persist all members of gInflux Group on every change
+    * : strategy = everyChange, everyHour, everyDay, restoreOnStartup
+}

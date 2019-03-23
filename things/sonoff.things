@@ -1,0 +1,767 @@
+Bridge mqtt:broker:myMQTTBroker 
+  "Mosquitto" 
+  [ host="localhost", 
+    port=1883, 
+    secure=false, 
+    clientID="myMQTTClient" ]
+{
+    //Veranda Light
+    Thing topic veranda01 "Veranda Light"
+    {
+      Channels:
+          Type switch : switch  
+            "Power Switch"
+            [ stateTopic="stat/veranda01/POWER", 
+            commandTopic="cmnd/veranda01/POWER", 
+            on="ON", 
+            off="OFF" ]
+
+          Type switch : state
+            "Switch State"       
+            [ stateTopic="tele/veranda01/STATE", 
+            transformationPattern="JSONPATH:$.POWER", 
+            on="ON", 
+            off="OFF" ]
+
+          Type string : Version
+            "Firmware Version"
+            [ stateTopic="stat/veranda01/STATUS2",  
+            transformationPattern="JSONPATH:$.StatusFWR.Version"]
+
+          Type number : vcc
+            "VCC"
+            [ stateTopic="tele/veranda01/STATE", 
+            transformationPattern="JSONPATH:$.Vcc"  ]
+
+          Type string : hostname
+            "Hostname"
+            [ stateTopic="stat/veranda01/STATUS5",
+            transformationPattern="JSONPATH:$.StatusNET.Hostname" ]
+
+          Type string : ipaddress
+            "IP Address"
+            [ stateTopic="stat/veranda01/STATUS5",
+            transformationPattern="JSONPATH:$.StatusNET.IPAddress" ]
+
+          Type string : wifi-rssi
+            "Wifi RSSI"
+            [ stateTopic="tele/veranda01/STATE",
+            transformationPattern="JSONPATH:$.Wifi.RSSI" ]
+
+          Type string : wifi-ap
+            "Wifi AP"
+            [ stateTopic="tele/veranda01/STATE", 
+            transformationPattern="JSONPATH:$.Wifi.AP" ]
+
+          Type string : wifi-SSId
+            "Wifi SSID"
+            [ stateTopic="tele/veranda01/STATE",
+            transformationPattern="JSONPATH:$.Wifi.SSId" ]
+
+          Type string : macaddress
+            "Mac Address"
+            [ stateTopic="stat/veranda01/STATUS5",
+            transformationPattern="JSONPATH:$.StatusNET.Mac" ]
+
+          Type string : devicestate
+            "Device State"
+            [ stateTopic="tele/veranda01/LWT" ]
+    }
+    // end of thing
+
+    //Outdoor Kitchen Light
+    Thing topic OtdoorKTL "Outdoor Kitchen Light"  
+    {
+      Channels:
+          Type switch : switch          
+            "Power Switch"          
+            [ stateTopic="stat/OtdoorKTL/POWER", 
+            commandTopic="cmnd/OtdoorKTL/POWER", 
+            on="ON", 
+            off="OFF" ]
+          
+          Type switch : state
+            "Switch State"
+            [ stateTopic="tele/OtdoorKTL/STATE", 
+            transformationPattern="JSONPATH:$.POWER", 
+            on="ON", 
+            off="OFF" ] 
+ 
+          Type string : Version
+            "Firmware Version"
+            [ stateTopic="stat/OtdoorKTL/STATUS2",  
+            transformationPattern="JSONPATH:$.StatusFWR.Version"]
+
+          Type number : vcc
+            "VCC"
+            [ stateTopic="tele/OtdoorKTL/STATE", 
+            transformationPattern="JSONPATH:$.Vcc"  ]
+
+          Type string : hostname
+            "Hostname"
+            [ stateTopic="stat/OtdoorKTL/STATUS5",
+            transformationPattern="JSONPATH:$.StatusNET.Hostname" ]
+
+          Type string : ipaddress
+            "IP Address"
+            [ stateTopic="stat/OtdoorKTL/STATUS5",
+            transformationPattern="JSONPATH:$.StatusNET.IPAddress" ]
+
+          Type string : wifi-rssi
+            "Wifi RSSI"
+            [ stateTopic="tele/OtdoorKTL/STATE",
+            transformationPattern="JSONPATH:$.Wifi.RSSI" ]
+
+          Type string : wifi-ap
+            "Wifi AP"
+            [ stateTopic="tele/OtdoorKTL/STATE", 
+            transformationPattern="JSONPATH:$.Wifi.AP" ]
+
+          Type string : wifi-SSId
+            "Wifi SSID"
+            [ stateTopic="tele/OtdoorKTL/STATE",
+            transformationPattern="JSONPATH:$.Wifi.SSId" ]
+
+          Type string : macaddress
+            "Mac Address"
+            [ stateTopic="stat/OtdoorKTL/STATUS5",
+            transformationPattern="JSONPATH:$.StatusNET.Mac" ]
+
+          Type string : devicestate
+            "Device State"
+            [ stateTopic="tele/OtdoorKTL/LWT" ]
+    }
+    // end of thing
+
+    //Kitchen Counter Light
+    Thing topic CounterKTL "Kitchen Counter Light"
+    {
+      Channels:
+          Type switch : switch          
+            "Power Switch"          
+            [ stateTopic="stat/CounterKTL/POWER", 
+            commandTopic="cmnd/CounterKTL/POWER", 
+            on="ON", 
+            off="OFF" ]
+
+          Type switch : state
+            "Switch State"
+            [ stateTopic="tele/CounterKTL/STATE", 
+            transformationPattern="JSONPATH:$.POWER", 
+            on="ON", 
+            off="OFF" ]
+
+          Type string : Version
+            "Firmware Version"
+            [ stateTopic="stat/CounterKTL/STATUS2",  
+            transformationPattern="JSONPATH:$.StatusFWR.Version"]
+
+          Type number : vcc
+            "VCC"
+            [ stateTopic="tele/CounterKTL/STATE", 
+            transformationPattern="JSONPATH:$.Vcc"  ]
+
+          Type string : hostname
+            "Hostname"
+            [ stateTopic="stat/CounterKTL/STATUS5",
+            transformationPattern="JSONPATH:$.StatusNET.Hostname" ]
+
+          Type string : ipaddress
+            "IP Address"
+            [ stateTopic="stat/CounterKTL/STATUS5",
+            transformationPattern="JSONPATH:$.StatusNET.IPAddress" ]
+
+          Type string : wifi-rssi
+            "Wifi RSSI"
+            [ stateTopic="tele/CounterKTL/STATE",
+            transformationPattern="JSONPATH:$.Wifi.RSSI" ]
+
+          Type string : wifi-ap
+            "Wifi AP"
+            [ stateTopic="tele/CounterKTL/STATE", 
+            transformationPattern="JSONPATH:$.Wifi.AP" ]
+
+          Type string : wifi-SSId
+            "Wifi SSID"
+            [ stateTopic="tele/CounterKTL/STATE",
+            transformationPattern="JSONPATH:$.Wifi.SSId" ]
+
+          Type string : macaddress
+            "Mac Address"
+            [ stateTopic="stat/CounterKTL/STATUS5",
+            transformationPattern="JSONPATH:$.StatusNET.Mac" ]
+
+          Type string : devicestate
+            "Device State"
+            [ stateTopic="tele/CounterKTL/LWT" ]
+          
+    }
+    // end of thing
+
+    //Kitchen Sink Light
+    Thing topic SinkKTL "Kitchen Sink Light"  {
+      Channels:
+          Type switch : switch          
+            "Power Switch"          
+            [ stateTopic="stat/SinkKTL/POWER", 
+            commandTopic="cmnd/SinkKTL/POWER", 
+            on="ON", 
+            off="OFF" ]
+          
+          Type switch : state
+            "Switch State"
+            [ stateTopic="tele/SinkKTL/STATE", 
+            transformationPattern="JSONPATH:$.POWER", 
+            on="ON", 
+            off="OFF" ]
+
+          Type string : Version
+            "Firmware Version"
+            [ stateTopic="stat/SinkKTL/STATUS2",  
+            transformationPattern="JSONPATH:$.StatusFWR.Version" ]
+
+          Type number : vcc
+            "VCC"
+            [ stateTopic="tele/SinkKTL/STATE", 
+            transformationPattern="JSONPATH:$.Vcc"  ]
+
+          Type string : hostname
+            "Hostname"
+            [ stateTopic="stat/SinkKTL/STATUS5",
+            transformationPattern="JSONPATH:$.StatusNET.Hostname" ]
+
+          Type string : ipaddress
+            "IP Address"
+            [ stateTopic="stat/SinkKTL/STATUS5",
+            transformationPattern="JSONPATH:$.StatusNET.IPAddress" ]
+
+          Type string : wifi-rssi
+            "Wifi RSSI"
+            [ stateTopic="tele/SinkKTL/STATE",
+            transformationPattern="JSONPATH:$.Wifi.RSSI" ]
+
+          Type string : wifi-ap
+            "Wifi AP"
+            [ stateTopic="tele/SinkKTL/STATE", 
+            transformationPattern="JSONPATH:$.Wifi.AP" ]
+
+          Type string : wifi-SSId
+            "Wifi SSID"
+            [ stateTopic="tele/SinkKTL/STATE",
+            transformationPattern="JSONPATH:$.Wifi.SSId" ]
+
+          Type string : macaddress
+            "Mac Address"
+            [ stateTopic="stat/SinkKTL/STATUS5",
+            transformationPattern="JSONPATH:$.StatusNET.Mac" ]
+
+          Type string : devicestate
+            "Device State"
+            [ stateTopic="tele/SinkKTL/LWT" ]
+    }
+    // end of thing
+
+    //Living Room Light
+    Thing topic LivingRML0 "Lounge Light"  {
+      Channels:
+          Type switch : switch          
+            "Power Switch"          
+            [ stateTopic="stat/LivingRML0/POWER", 
+            commandTopic="cmnd/LivingRML0/POWER", 
+            on="ON", 
+            off="OFF" ]
+          
+          Type switch : state
+            "Switch State"
+            [ stateTopic="tele/LivingRML0/STATE", 
+            transformationPattern="JSONPATH:$.POWER", 
+            on="ON", 
+            off="OFF" ]
+
+          Type string : Version
+            "Firmware Version"
+            [ stateTopic="stat/LivingRML0/STATUS2",  
+            transformationPattern="JSONPATH:$.StatusFWR.Version"]
+
+          Type number : vcc
+            "VCC"
+            [ stateTopic="tele/LivingRML0/STATE", 
+            transformationPattern="JSONPATH:$.Vcc"  ]
+
+          Type string : hostname
+            "Hostname"
+            [ stateTopic="stat/LivingRML0/STATUS5",
+            transformationPattern="JSONPATH:$.StatusNET.Hostname" ]
+
+          Type string : ipaddress
+            "IP Address"
+            [ stateTopic="stat/LivingRML0/STATUS5",
+            transformationPattern="JSONPATH:$.StatusNET.IPAddress" ]
+
+          Type string : wifi-rssi
+            "Wifi RSSI"
+            [ stateTopic="tele/LivingRML0/STATE",
+            transformationPattern="JSONPATH:$.Wifi.RSSI" ]
+
+          Type string : wifi-ap
+            "Wifi AP"
+            [ stateTopic="tele/LivingRML0/STATE", 
+            transformationPattern="JSONPATH:$.Wifi.AP" ]
+
+          Type string : wifi-SSId
+            "Wifi SSID"
+            [ stateTopic="tele/LivingRML0/STATE",
+            transformationPattern="JSONPATH:$.Wifi.SSId" ]
+
+          Type string : macaddress
+            "Mac Address"
+            [ stateTopic="stat/LivingRML0/STATUS5",
+            transformationPattern="JSONPATH:$.StatusNET.Mac" ]
+
+          Type string : devicestate
+            "Device State"
+            [ stateTopic="tele/LivingRML0/LWT" ]
+    }
+    // end of thing
+
+    //Living Room Light
+    Thing topic LivingRML1 "Living Room Light"  {
+      Channels:
+          Type switch : switch          
+            "Power Switch"          
+            [ stateTopic="stat/LivingRML1/POWER", 
+            commandTopic="cmnd/LivingRML1/POWER", 
+            on="ON", 
+            off="OFF" ]
+
+          Type switch : state
+            "Switch State"
+            [ stateTopic="tele/LivingRML1/STATE", 
+            transformationPattern="JSONPATH:$.POWER", 
+            on="ON", 
+            off="OFF" ]
+
+          Type string : Version
+            "Firmware Version"
+            [ stateTopic="stat/LivingRML1/STATUS2",  
+            transformationPattern="JSONPATH:$.StatusFWR.Version"]
+
+          Type number : vcc
+            "VCC"
+            [ stateTopic="tele/LivingRML1/STATE", 
+            transformationPattern="JSONPATH:$.Vcc"  ]
+
+          Type string : hostname
+            "Hostname"
+            [ stateTopic="stat/LivingRML1/STATUS5",
+            transformationPattern="JSONPATH:$.StatusNET.Hostname" ]
+
+          Type string : ipaddress
+            "IP Address"
+            [ stateTopic="stat/LivingRML1/STATUS5",
+            transformationPattern="JSONPATH:$.StatusNET.IPAddress" ]
+
+          Type string : wifi-rssi
+            "Wifi RSSI"
+            [ stateTopic="tele/LivingRML1/STATE",
+            transformationPattern="JSONPATH:$.Wifi.RSSI" ]
+
+          Type string : wifi-ap
+            "Wifi AP"
+            [ stateTopic="tele/LivingRML1/STATE", 
+            transformationPattern="JSONPATH:$.Wifi.AP" ]
+
+          Type string : wifi-SSId
+            "Wifi SSID"
+            [ stateTopic="tele/LivingRML1/STATE",
+            transformationPattern="JSONPATH:$.Wifi.SSId" ]
+
+          Type string : macaddress
+            "Mac Address"
+            [ stateTopic="stat/LivingRML1/STATUS5",
+            transformationPattern="JSONPATH:$.StatusNET.Mac" ]
+
+          Type string : devicestate
+            "Device State"
+            [ stateTopic="tele/LivingRML1/LWT" ]
+    }
+    // end of thing
+
+    //Outdoor Bedroom Light
+    Thing topic OtdoorBRL "Outdoor Bedroom Light"  {
+      Channels:
+          Type switch : switch          
+            "Power Switch"          
+            [ stateTopic="stat/OtdoorBRL/POWER", 
+            commandTopic="cmnd/OtdoorBRL/POWER", 
+            on="ON", 
+            off="OFF" ]
+          
+          Type switch : state
+            "Switch State"
+            [ stateTopic="tele/OtdoorBRL/STATE", 
+            transformationPattern="JSONPATH:$.POWER", 
+            on="ON", 
+            off="OFF" ]
+
+          Type string : Version
+            "Firmware Version"
+            [ stateTopic="stat/OtdoorBRL/STATUS2",  
+            transformationPattern="JSONPATH:$.StatusFWR.Version"]
+
+          Type number : vcc
+            "VCC"
+            [ stateTopic="tele/OtdoorBRL/STATE", 
+            transformationPattern="JSONPATH:$.Vcc"  ]
+
+          Type string : hostname
+            "Hostname"
+            [ stateTopic="stat/OtdoorBRL/STATUS5",
+            transformationPattern="JSONPATH:$.StatusNET.Hostname" ]
+
+          Type string : ipaddress
+            "IP Address"
+            [ stateTopic="stat/OtdoorBRL/STATUS5",
+            transformationPattern="JSONPATH:$.StatusNET.IPAddress" ]
+
+          Type string : wifi-rssi
+            "Wifi RSSI"
+            [ stateTopic="tele/OtdoorBRL/STATE",
+            transformationPattern="JSONPATH:$.Wifi.RSSI" ]
+
+          Type string : wifi-ap
+            "Wifi AP"
+            [ stateTopic="tele/OtdoorBRL/STATE", 
+            transformationPattern="JSONPATH:$.Wifi.AP" ]
+
+          Type string : wifi-SSId
+            "Wifi SSID"
+            [ stateTopic="tele/OtdoorBRL/STATE",
+            transformationPattern="JSONPATH:$.Wifi.SSId" ]
+
+          Type string : macaddress
+            "Mac Address"
+            [ stateTopic="stat/OtdoorBRL/STATUS5",
+            transformationPattern="JSONPATH:$.StatusNET.Mac" ]
+
+          Type string : devicestate
+            "Device State"
+            [ stateTopic="tele/OtdoorBRL/LWT" ]
+    }
+    // end of thing
+
+    //Outdoor Bedroom Porch Light
+    Thing topic OtdoorBRPL0 "Outdoor Bedroom Porch Light"  {
+      Channels:
+          Type switch : switch          
+            "Power Switch"          
+            [ stateTopic="stat/OtdoorBRPL0/POWER", 
+            commandTopic="cmnd/OtdoorBRPL0/POWER", 
+            on="ON", 
+            off="OFF" ]
+          
+          Type switch : state
+            "Switch State"
+            [ stateTopic="tele/OtdoorBRPL0/STATE", 
+            transformationPattern="JSONPATH:$.POWER", 
+            on="ON", 
+            off="OFF" ]
+
+          Type string : Version
+            "Firmware Version"
+            [ stateTopic="stat/OtdoorBRPL0/STATUS2",  
+            transformationPattern="JSONPATH:$.StatusFWR.Version"]
+
+          Type number : vcc
+            "VCC"
+            [ stateTopic="tele/OtdoorBRPL0/STATE", 
+            transformationPattern="JSONPATH:$.Vcc"  ]
+
+          Type string : hostname
+            "Hostname"
+            [ stateTopic="stat/OtdoorBRPL0/STATUS5",
+            transformationPattern="JSONPATH:$.StatusNET.Hostname" ]
+
+          Type string : ipaddress
+            "IP Address"
+            [ stateTopic="stat/OtdoorBRPL0/STATUS5",
+            transformationPattern="JSONPATH:$.StatusNET.IPAddress" ]
+
+          Type string : wifi-rssi
+            "Wifi RSSI"
+            [ stateTopic="tele/OtdoorBRPL0/STATE",
+            transformationPattern="JSONPATH:$.Wifi.RSSI" ]
+
+          Type string : wifi-ap
+            "Wifi AP"
+            [ stateTopic="tele/OtdoorBRPL0/STATE", 
+            transformationPattern="JSONPATH:$.Wifi.AP" ]
+
+          Type string : wifi-SSId
+            "Wifi SSID"
+            [ stateTopic="tele/OtdoorBRPL0/STATE",
+            transformationPattern="JSONPATH:$.Wifi.SSId" ]
+
+          Type string : macaddress
+            "Mac Address"
+            [ stateTopic="stat/OtdoorBRPL0/STATUS5",
+            transformationPattern="JSONPATH:$.StatusNET.Mac" ]
+
+          Type string : devicestate
+            "Device State"
+            [ stateTopic="tele/OtdoorBRPL0/LWT" ]
+    }
+    // end of thing
+
+    //Wash Room Light
+    Thing topic WashRML "Wash Room Light"  {
+      Channels:
+          Type switch : switch
+            "Power Switch"
+            [ stateTopic="stat/WashRML/POWER", 
+            commandTopic="cmnd/WashRML/POWER", 
+            on="ON", 
+            off="OFF" ]
+
+          Type switch : state
+            "Switch State"
+            [ stateTopic="tele/WashRML/STATE", 
+            transformationPattern="JSONPATH:$.POWER", 
+            on="ON", 
+            off="OFF" ]
+
+          Type string : Version
+            "Firmware Version"
+            [ stateTopic="stat/WashRML/STATUS2",  
+            transformationPattern="JSONPATH:$.StatusFWR.Version"]
+
+          Type number : vcc
+            "VCC"
+            [ stateTopic="tele/WashRML/STATE", 
+            transformationPattern="JSONPATH:$.Vcc"  ]
+
+          Type string : hostname
+            "Hostname"
+            [ stateTopic="stat/WashRML/STATUS5",
+            transformationPattern="JSONPATH:$.StatusNET.Hostname" ]
+
+          Type string : ipaddress
+            "IP Address"
+            [ stateTopic="stat/WashRML/STATUS5",
+            transformationPattern="JSONPATH:$.StatusNET.IPAddress" ]
+
+          Type string : wifi-rssi
+            "Wifi RSSI"
+            [ stateTopic="tele/WashRML/STATE",
+            transformationPattern="JSONPATH:$.Wifi.RSSI" ]
+
+          Type string : wifi-ap
+            "Wifi AP"
+            [ stateTopic="tele/WashRML/STATE", 
+            transformationPattern="JSONPATH:$.Wifi.AP" ]
+
+          Type string : wifi-SSId
+            "Wifi SSID"
+            [ stateTopic="tele/WashRML/STATE",
+            transformationPattern="JSONPATH:$.Wifi.SSId" ]
+
+          Type string : macaddress
+            "Mac Address"
+            [ stateTopic="stat/WashRML/STATUS5",
+            transformationPattern="JSONPATH:$.StatusNET.Mac" ]
+
+          Type string : devicestate
+            "Device State"
+            [ stateTopic="tele/WashRML/LWT" ]          
+    }
+    // end of thing
+
+    //Hallway Light
+    Thing topic HallWL "Hallway Light"  {
+      Channels:
+          Type switch : switch          
+            "Power Switch"          
+            [ stateTopic="stat/HallWL/POWER", 
+            commandTopic="cmnd/HallWL/POWER", 
+            on="ON", 
+            off="OFF" ]
+          
+          Type switch : state
+            "Switch State"
+            [ stateTopic="tele/HallWL/STATE", 
+            transformationPattern="JSONPATH:$.POWER", 
+            on="ON", 
+            off="OFF" ]
+
+          Type string : Version
+            "Firmware Version"
+            [ stateTopic="stat/HallWL/STATUS2",  
+            transformationPattern="JSONPATH:$.StatusFWR.Version"]
+
+          Type number : vcc
+            "VCC"
+            [ stateTopic="tele/HallWL/STATE", 
+            transformationPattern="JSONPATH:$.Vcc"  ]
+
+          Type string : hostname
+            "Hostname"
+            [ stateTopic="stat/HallWL/STATUS5",
+            transformationPattern="JSONPATH:$.StatusNET.Hostname" ]
+
+          Type string : ipaddress
+            "IP Address"
+            [ stateTopic="stat/HallWL/STATUS5",
+            transformationPattern="JSONPATH:$.StatusNET.IPAddress" ]
+
+          Type string : wifi-rssi
+            "Wifi RSSI"
+            [ stateTopic="tele/HallWL/STATE",
+            transformationPattern="JSONPATH:$.Wifi.RSSI" ]
+
+          Type string : wifi-ap
+            "Wifi AP"
+            [ stateTopic="tele/HallWL/STATE", 
+            transformationPattern="JSONPATH:$.Wifi.AP" ]
+
+          Type string : wifi-SSId
+            "Wifi SSID"
+            [ stateTopic="tele/HallWL/STATE",
+            transformationPattern="JSONPATH:$.Wifi.SSId" ]
+
+          Type string : macaddress
+            "Mac Address"
+            [ stateTopic="stat/HallWL/STATUS5",
+            transformationPattern="JSONPATH:$.StatusNET.Mac" ]
+
+          Type string : devicestate
+            "Device State"
+            [ stateTopic="tele/HallWL/LWT" ]
+    }
+    // end of thing
+
+    //Passage Light
+    Thing topic PassageL "Passage Light"  {
+      Channels:
+          Type switch : switch          
+            "Power Switch"          
+            [ stateTopic="stat/PassageL/POWER", 
+            commandTopic="cmnd/PassageL/POWER", 
+            on="ON", 
+            off="OFF" ]
+
+          Type switch : state
+            "Switch State"
+            [ stateTopic="tele/PassageL/STATE", 
+            transformationPattern="JSONPATH:$.POWER", 
+            on="ON", 
+            off="OFF" ]
+
+          Type string : Version
+            "Firmware Version"
+            [ stateTopic="stat/PassageL/STATUS2",  
+            transformationPattern="JSONPATH:$.StatusFWR.Version"]
+
+          Type number : vcc
+            "VCC"
+            [ stateTopic="tele/PassageL/STATE", 
+            transformationPattern="JSONPATH:$.Vcc"  ]
+
+          Type string : hostname
+            "Hostname"
+            [ stateTopic="stat/PassageL/STATUS5",
+            transformationPattern="JSONPATH:$.StatusNET.Hostname" ]
+
+          Type string : ipaddress
+            "IP Address"
+            [ stateTopic="stat/PassageL/STATUS5",
+            transformationPattern="JSONPATH:$.StatusNET.IPAddress" ]
+
+          Type string : wifi-rssi
+            "Wifi RSSI"
+            [ stateTopic="tele/PassageL/STATE",
+            transformationPattern="JSONPATH:$.Wifi.RSSI" ]
+
+          Type string : wifi-ap
+            "Wifi AP"
+            [ stateTopic="tele/PassageL/STATE", 
+            transformationPattern="JSONPATH:$.Wifi.AP" ]
+
+          Type string : wifi-SSId
+            "Wifi SSID"
+            [ stateTopic="tele/PassageL/STATE",
+            transformationPattern="JSONPATH:$.Wifi.SSId" ]
+
+          Type string : macaddress
+            "Mac Address"
+            [ stateTopic="stat/PassageL/STATUS5",
+            transformationPattern="JSONPATH:$.StatusNET.Mac" ]
+
+          Type string : devicestate
+            "Device State"
+            [ stateTopic="tele/PassageL/LWT" ]
+    }
+    // end of thing
+
+    //Gate Switch
+    Thing topic gate "Gate Switch"  {
+      Channels:
+          Type switch : switch          
+            "Power Switch"          
+            [ stateTopic="stat/gate/POWER", 
+            commandTopic="cmnd/gate/POWER", 
+            on="OPEN", 
+            off="CLOSE" ]
+
+          Type switch : state
+            "Switch State"
+            [ stateTopic="tele/gate/STATE", 
+            transformationPattern="JSONPATH:$.POWER", 
+            on="ON", 
+            off="OFF" ]
+
+          Type string : Version
+            "Firmware Version"
+            [ stateTopic="stat/gate/STATUS2",  
+            transformationPattern="JSONPATH:$.StatusFWR.Version"]
+
+          Type number : vcc
+            "VCC"
+            [ stateTopic="tele/gate/STATE", 
+            transformationPattern="JSONPATH:$.Vcc"  ]
+
+          Type string : hostname
+            "Hostname"
+            [ stateTopic="stat/gate/STATUS5",
+            transformationPattern="JSONPATH:$.StatusNET.Hostname" ]
+
+          Type string : ipaddress
+            "IP Address"
+            [ stateTopic="stat/gate/STATUS5",
+            transformationPattern="JSONPATH:$.StatusNET.IPAddress" ]
+
+          Type string : wifi-rssi
+            "Wifi RSSI"
+            [ stateTopic="tele/gate/STATE",
+            transformationPattern="JSONPATH:$.Wifi.RSSI" ]
+
+          Type string : wifi-ap
+            "Wifi AP"
+            [ stateTopic="tele/gate/STATE", 
+            transformationPattern="JSONPATH:$.Wifi.AP" ]
+
+          Type string : wifi-SSId
+            "Wifi SSID"
+            [ stateTopic="tele/gate/STATE",
+            transformationPattern="JSONPATH:$.Wifi.SSId" ]
+
+          Type string : macaddress
+            "Mac Address"
+            [ stateTopic="stat/gate/STATUS5",
+            transformationPattern="JSONPATH:$.StatusNET.Mac" ]
+
+          Type string : devicestate
+            "Device State"
+            [ stateTopic="tele/gate/LWT" ]
+    }
+    // end of thing
+}

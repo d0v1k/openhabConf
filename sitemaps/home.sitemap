@@ -1,0 +1,87 @@
+sitemap home label="My Home" 
+{
+
+    Frame label="Status" {
+       	Text item=SpeedtestSummary {
+       		Frame label="Results" {
+                Text item=SpeedtestResultDown
+                Text item=SpeedtestResultUp
+                Text item=SpeedtestResultPing
+                }
+            Frame label="Control" {
+                Text item=SpeedtestResultDate
+                Text item=SpeedtestRunning label="Speedtest [%s]" visibility=[SpeedtestRunning != "-"]
+                    Switch item=SpeedtestRerun mappings=[ON="Start"]
+            }
+       	}
+        Text label="Presence" icon="motion" {
+            Text        item=homeDistanceLM icon=dhouse
+    	    Switch      item=atWorkLM icon=office
+    	    Switch      item=atHomeLM icon=presence
+    	    Text        item=lastSeenLM
+    	    Text        item=batteryLM icon=batterylevel
+    	    Text        item=accuracyLM icon=gpsaccu
+    	    Mapview     item=locationLM height=4 icon=map
+	    }
+    }
+
+    Frame label="Living Room" {
+	Text label="Alexa" icon="alexa" {
+            Default   item=Echo_Living_Room_Player
+            Slider    item=Echo_Living_Room_Volume
+            Selection item=Echo_Living_Room_RadioStationId mappings=[ ''='Off', 's122492'='Yarona FM', 's6410'='Jacaranda FM', 's24939'='BBC Radio 1', 's98698'='House Nation UK', 's104860'='radioplus', 's81885'='Top FM' ]
+            Text      item=Echo_Living_Room_ProviderDisplayName
+            //Image     item=Echo_Living_Room_ImageUrl      label=""
+            Text      item=Echo_Living_Room_Title
+            Text      item=Echo_Living_Room_Subtitle1
+            Text      item=Echo_Living_Room_Subtitle2
+	}	
+        Text label="Google Chromecast" icon="google" {
+            Default   item=ChromecastControl
+            Slider    item=ChromecastVolume icon=soundvolume
+        }
+    }
+
+    Frame label="All Groups" {
+        Switch item=Lights mappings=[OFF="All Off", ON="All On"]
+        Switch item=gOutdoor mappings=[OFF="All Off", ON="All On"]
+        Switch item=gKitchen mappings=[OFF="All Off", ON="All On"]
+        Switch item=gLounge mappings=[OFF="All Off", ON="All On"] 
+    }
+
+    Frame label="Control" {
+	//Switch item=dummy
+	    Switch item=Gate_Switch	label="Gate" mappings=[ON="Start"]
+        Switch item=veranda01_Switch label="Veranda Light [%s]"
+        Switch item=OtdoorKTL_Switch label="Outdoor Kitchen Light [%s]"
+        Switch item=CounterKTL_Switch label="Kitchen Counter Light [%s]"
+	    Switch item=SinkKTL_Switch label="Kitchen Sink Light [%s]"
+	    Switch item=LivingRML0_Switch label="Lounge Light [%s]"
+	    Switch item=LivingRML1_Switch label="Living Room Light [%s]"
+	    Switch item=OtdoorBRL_Switch label="Outdoor Bedroom Light [%s]"
+	    Switch item=OtdoorBRPL0_Switch label="Outdoor Porch Light [%s]"
+	    Switch item=HallWL_Switch label="Hallway Light [%s]"
+	    Switch item=PassageL_Switch label="Passage Light [%s]"
+	    Switch item=WashRML_Switch label="Wash Room Light [%s]"
+    }
+
+    Frame label="Info" {    
+        Text label="Sonoff Switch Info" {
+            Frame label="Sonoff Switch" {
+                Group  item=gVerandaSWInfo
+                Group  item=gOtdoorKTLSWInfo
+		        Group  item=gCounterKTLSWInfo
+		        Group  item=gSinkKTLSWInfo
+		        Group  item=gLivingRML0SWInfo
+		        Group  item=gLivingRML1SWInfo
+		        Group  item=gOtdoorBRLSWInfo
+		        Group  item=gOtdoorBRPL0SWInfo
+		        Group  item=gWashRMLSWInfo
+		        Group  item=gHallWLSWInfo
+		        Group  item=gPassageLSWInfo
+		        Group  item=gGateSWInfo
+		        Switch item=UpdateStatus mappings=[ON="Start"]
+            }
+        }
+    }
+}

@@ -1,0 +1,727 @@
+//active groups
+Group:Switch:OR(ON, OFF)    Lights              "All Lights [(%d)]"           [ "Switchable" ]
+Group:Switch:OR(ON, OFF)    gOutdoor            "Outdoor Lights [(%d)]"       [ "Switchable" ]
+Group:Switch:OR(ON, OFF)    gKitchen            "Kitchen Lights [(%d)]"       [ "Switchable" ]
+Group:Switch:OR(ON, OFF)    gLounge             "Living Room Lights [(%d)]"   [ "Switchable" ]
+
+Group			    gVerandaSWInfo	"Veranda Switch Info"
+Group                       gOtdoorKTLSWInfo    "Outdoor Kitchen Switch Info"
+Group                       gCounterKTLSWInfo   "Kitchen Counter Light"
+Group                       gSinkKTLSWInfo      "Kitchen Sink Light"
+Group                       gLivingRML0SWInfo   "Lounge Light"
+Group                       gLivingRML1SWInfo   "Living Room Light"
+Group                       gOtdoorBRLSWInfo    "Outdoor Bedroom Light"
+Group                       gOtdoorBRPL0SWInfo  "Outdoor Porch Light"
+Group                       gWashRMLSWInfo      "Wash Room Light"
+Group                       gHallWLSWInfo       "Hallway Light"
+Group                       gPassageLSWInfo     "Passage Light"
+Group                       gGateSWInfo         "Gate"
+
+
+//Veranda Light
+Switch veranda01_Switch
+    "Veranda Light"             
+    (Lights,gOutdoor)       
+    [ "Switchable" ]
+    { channel="mqtt:topic:myMQTTBroker:veranda01:PowerSwitch", autoupdate="true" }         
+
+Switch veranda01_State
+    "State"
+    (gVerandaSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:veranda01:state" }
+
+String veranda01_Version
+    "Version [%s]"
+    (gVerandaSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:veranda01:Version" }
+
+Number veranda01_Vcc
+    "VCC  [%s]"
+    (gVerandaSWInfo) 
+    { channel="mqtt:topic:myMQTTBroker:veranda01:vcc" }
+
+String veranda01_hostname
+    "Hostname [%s]"
+    (gVerandaSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:veranda01:hostname" }
+
+String veranda01_ipaddress
+    "IP Address [%s]"
+    (gVerandaSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:veranda01:ipaddress" }
+
+String veranda01_WifiRssi
+    "WiFi Signal Strength [%s]" 	
+    (gVerandaSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:veranda01:wifi-rssi" }
+
+String veranda01_WifiAp
+    "Wifi AP  [%s]"
+    (gVerandaSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:veranda01:wifi-ap" }
+
+String veranda01_wifiSSId
+    "Wifi SSID  [%s]"
+    (gVerandaSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:veranda01:wifi-SSId" }
+
+String veranda01_macaddress
+    "Mac Address [%s]"
+    (gVerandaSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:veranda01:macaddress" }
+
+String veranda01_DeviceState
+    "Device State"
+    (gVerandaSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:veranda01:devicestate" }
+
+//End
+
+//Outdoor Kitchen Light
+Switch OtdoorKTL_Switch          
+    "Outdoor Kitchen Light"        
+    (Lights,gOutdoor)     
+    [ "Switchable" ]     
+    { channel="mqtt:topic:myMQTTBroker:OtdoorKTL:PowerSwitch", autoupdate="true" }
+
+Switch OtdoorKTL_State           
+    "State"
+    (gOtdoorKTLSWInfo)      
+    { channel="mqtt:topic:myMQTTBroker:OtdoorKTL:state" }
+
+String OtdoorKTL_Version
+    "Version [%s]"
+    (gOtdoorKTLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:OtdoorKTL:Version" }
+
+Number OtdoorKTL_Vcc
+    "VCC  [%s]"
+    (gOtdoorKTLSWInfo) 
+    { channel="mqtt:topic:myMQTTBroker:OtdoorKTL:vcc" }
+
+String OtdoorKTL_hostname
+    "Hostname [%s]"
+    (gOtdoorKTLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:OtdoorKTL:hostname" }
+
+String OtdoorKTL_ipaddress
+    "IP Address [%s]"
+    (gOtdoorKTLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:OtdoorKTL:ipaddress" }
+
+String OtdoorKTL_WifiRssi
+    "WiFi Signal Strength [%s]" 	
+    (gOtdoorKTLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:OtdoorKTL:wifi-rssi" }
+
+String OtdoorKTL_WifiAp
+    "Wifi AP  [%s]"
+    (gOtdoorKTLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:OtdoorKTL:wifi-ap" }
+
+String OtdoorKTL_wifiSSId
+    "Wifi SSID  [%s]"
+    (gOtdoorKTLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:OtdoorKTL:wifi-SSId" }
+
+String OtdoorKTL_macaddress
+    "Mac Address  [%s]"
+    (gOtdoorKTLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:OtdoorKTL:macaddress" }
+
+String OtdoorKTL_DeviceState
+    "Device State"
+    (gOtdoorKTLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:OtdoorKTL:devicestate" }
+
+//End
+
+//Kitchen Counter Light
+Switch CounterKTL_Switch         
+    "Kitchen Counter Light"        
+    (Lights,gKitchen)     
+    [ "Switchable" ]     
+    { channel="mqtt:topic:myMQTTBroker:CounterKTL:PowerSwitch", autoupdate="true" }
+
+Switch CounterKTL_State
+    "State"
+    (gCounterKTLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:CounterKTL:state" }
+
+String CounterKTL_Version
+    "Version [%s]"
+    (gCounterKTLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:CounterKTL:Version" }
+
+Number CounterKTL_Vcc
+    "VCC  [%s]"
+    (gCounterKTLSWInfo) 
+    { channel="mqtt:topic:myMQTTBroker:CounterKTL:vcc" }
+
+String CounterKTL_hostname
+    "Hostname [%s]"
+    (gCounterKTLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:CounterKTL:hostname" }
+
+String CounterKTL_ipaddress
+    "IP Address [%s]"
+    (gCounterKTLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:CounterKTL:ipaddress" }
+
+String CounterKTL_WifiRssi
+    "WiFi Signal Strength [%s]"
+    (gCounterKTLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:CounterKTL:wifi-rssi" }
+
+String CounterKTL_WifiAp
+    "Wifi AP  [%s]"
+    (gCounterKTLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:CounterKTL:wifi-ap" }
+
+String CounterKTL_wifiSSId
+    "Wifi SSID  [%s]"
+    (gCounterKTLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:CounterKTL:wifi-SSId" }
+
+String CounterKTL_macaddress
+    "Mac Address [%s]"
+    (gCounterKTLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:CounterKTL:macaddress" }
+
+String CounterKTL_DeviceState
+    "Device State"
+    (gCounterKTLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:CounterKTL:devicestate" }
+//End
+
+//Kitchen Sink Light
+Switch SinkKTL_Switch            
+    "Kitchen Sink Light"         	
+    (Lights,gKitchen)     
+    [ "Switchable" ]     
+    { channel="mqtt:topic:myMQTTBroker:SinkKTL:PowerSwitch", autoupdate="true" }
+
+Switch SinkKTL_State
+    "State"
+    (gSinkKTLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:SinkKTL:state" }
+
+String SinkKTL_Version
+    "Version [%s]"
+    (gSinkKTLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:SinkKTL:Version" }
+
+Number SinkKTL_Vcc
+    "VCC  [%s]"
+    (gSinkKTLSWInfo) 
+    { channel="mqtt:topic:myMQTTBroker:SinkKTL:vcc" }
+
+String SinkKTL_hostname
+    "Hostname [%s]"
+    (gSinkKTLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:SinkKTL:hostname" }
+
+String SinkKTL_ipaddress
+    "IP Address [%s]"
+    (gSinkKTLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:SinkKTL:ipaddress" }
+
+String SinkKTL_WifiRssi
+    "WiFi Signal Strength [%s]"
+    (gSinkKTLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:SinkKTL:wifi-rssi" }
+
+String SinkKTL_WifiAp
+    "Wifi AP  [%s]"
+    (gSinkKTLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:SinkKTL:wifi-ap" }
+
+String SinkKTL_wifiSSId
+    "Wifi SSID  [%s]"
+    (gSinkKTLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:SinkKTL:wifi-SSId" }
+
+String SinkKTL_macaddress
+    "Mac Address [%s]"
+    (gSinkKTLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:SinkKTL:macaddress" }
+
+String SinkKTL_DeviceState
+    "Device State"
+    (gSinkKTLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:SinkKTL:devicestate" }
+
+//End
+
+//Living Room Light
+Switch LivingRML0_Switch
+    "Lounge Light"
+    (Lights,gLounge)
+    [ "Switchable" ]
+    { channel="mqtt:topic:myMQTTBroker:LivingRML0:PowerSwitch", autoupdate="true" }
+
+Switch LivingRML0_State
+    "State"
+    (gLivingRML0SWInfo)
+    { channel="mqtt:topic:myMQTTBroker:LivingRML0:state" }
+
+String LivingRML0_Version
+    "Version [%s]"
+    (gLivingRML0SWInfo)
+    { channel="mqtt:topic:myMQTTBroker:LivingRML0:Version" }
+
+Number LivingRML0_Vcc
+    "VCC  [%s]"
+    (gLivingRML0SWInfo) 
+    { channel="mqtt:topic:myMQTTBroker:LivingRML0:vcc" }
+
+String LivingRML0_hostname
+    "Hostname [%s]"
+    (gLivingRML0SWInfo)
+    { channel="mqtt:topic:myMQTTBroker:LivingRML0:hostname" }
+
+String LivingRML0_ipaddress
+    "IP Address [%s]"
+    (gLivingRML0SWInfo)
+    { channel="mqtt:topic:myMQTTBroker:LivingRML0:ipaddress" }
+
+String LivingRML0_WifiRssi
+    "WiFi Signal Strength [%s]"
+    (gLivingRML0SWInfo)
+    { channel="mqtt:topic:myMQTTBroker:LivingRML0:wifi-rssi" }
+
+String LivingRML0_WifiAp
+    "Wifi AP  [%s]"
+    (gLivingRML0SWInfo)
+    { channel="mqtt:topic:myMQTTBroker:LivingRML0:wifi-ap" }
+
+String LivingRML0_wifiSSId
+    "Wifi SSID  [%s]"
+    (gLivingRML0SWInfo)
+    { channel="mqtt:topic:myMQTTBroker:LivingRML0:wifi-SSId" }
+
+String LivingRML0_macaddress
+    "Mac Address [%s]"
+    (gLivingRML0SWInfo)
+    { channel="mqtt:topic:myMQTTBroker:LivingRML0:macaddress" }
+
+String LivingRML0_DeviceState
+    "Device State"
+    (gLivingRML0SWInfo)
+    { channel="mqtt:topic:myMQTTBroker:LivingRML0:devicestate" }
+//End
+
+//Living Room Light
+Switch LivingRML1_Switch         
+    "Living Room Light"          
+    (Lights,gLounge)     
+    [ "Switchable" ]     
+    { channel="mqtt:topic:myMQTTBroker:LivingRML1:PowerSwitch", autoupdate="true" }
+
+Switch LivingRML1_State
+    "State"
+    (gLivingRML1SWInfo)
+    { channel="mqtt:topic:myMQTTBroker:LivingRML1:state" }
+
+String LivingRML1_Version
+    "Version [%s]"
+    (gLivingRML1SWInfo)
+    { channel="mqtt:topic:myMQTTBroker:LivingRML1:Version" }
+
+Number LivingRML1_Vcc
+    "VCC  [%s]"
+    (gLivingRML1SWInfo) 
+    { channel="mqtt:topic:myMQTTBroker:LivingRML1:vcc" }
+
+String LivingRML1_hostname
+    "Hostname [%s]"
+    (gLivingRML1SWInfo)
+    { channel="mqtt:topic:myMQTTBroker:LivingRML1:hostname" }
+
+String LivingRML1_ipaddress
+    "IP Address [%s]"
+    (gLivingRML1SWInfo)
+    { channel="mqtt:topic:myMQTTBroker:LivingRML1:ipaddress" }
+
+String LivingRML1_WifiRssi
+    "WiFi Signal Strength [%s]"
+    (gLivingRML1SWInfo)
+    { channel="mqtt:topic:myMQTTBroker:LivingRML1:wifi-rssi" }
+
+String LivingRML1_WifiAp
+    "Wifi AP  [%s]"
+    (gLivingRML1SWInfo)
+    { channel="mqtt:topic:myMQTTBroker:LivingRML1:wifi-ap" }
+
+String LivingRML1_wifiSSId
+    "Wifi SSID  [%s]"
+    (gLivingRML1SWInfo)
+    { channel="mqtt:topic:myMQTTBroker:LivingRML1:wifi-SSId" }
+
+String LivingRML1_macaddress
+    "Mac Address [%s]"
+    (gLivingRML1SWInfo)
+    { channel="mqtt:topic:myMQTTBroker:LivingRML1:macaddress" }
+
+String LivingRML1_DeviceState
+    "Device State"
+    (gLivingRML1SWInfo)
+    { channel="mqtt:topic:myMQTTBroker:LivingRML1:devicestate" }
+//End
+
+//Outdoor Bedroom Light
+Switch OtdoorBRL_Switch          
+    "Outdoor Bedroom Light"        
+    (Lights,gOutdoor)     
+    [ "Switchable" ]     
+    { channel="mqtt:topic:myMQTTBroker:OtdoorBRL:PowerSwitch", autoupdate="true" }
+
+Switch OtdoorBRL_State
+    "State"
+    (gOtdoorBRLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:OtdoorBRL:state" }
+
+String OtdoorBRL_Version
+    "Version [%s]"
+    (gOtdoorBRLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:OtdoorBRL:Version" }
+
+Number OtdoorBRL_Vcc
+    "VCC  [%s]"
+    (gOtdoorBRLSWInfo) 
+    { channel="mqtt:topic:myMQTTBroker:OtdoorBRL:vcc" }
+
+String OtdoorBRL_hostname
+    "Hostname [%s]"
+    (gOtdoorBRLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:OtdoorBRL:hostname" }
+
+String OtdoorBRL_ipaddress
+    "IP Address [%s]"
+    (gOtdoorBRLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:OtdoorBRL:ipaddress" }
+
+String OtdoorBRL_WifiRssi
+    "WiFi Signal Strength [%s]"
+    (gOtdoorBRLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:OtdoorBRL:wifi-rssi" }
+
+String OtdoorBRL_WifiAp
+    "Wifi AP  [%s]"
+    (gOtdoorBRLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:OtdoorBRL:wifi-ap" }
+
+String OtdoorBRL_wifiSSId
+    "Wifi SSID  [%s]"
+    (gOtdoorBRLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:OtdoorBRL:wifi-SSId" }
+
+String OtdoorBRL_macaddress
+    "Mac Address [%s]"
+    (gOtdoorBRLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:OtdoorBRL:macaddress" }
+
+String OtdoorBRL_DeviceState
+    "Device State"
+    (gOtdoorBRLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:OtdoorBRL:devicestate" }
+//End
+
+//Outdoor Bedroom Porch Light
+Switch OtdoorBRPL0_Switch        
+    "Outdoor Porch Light"          
+    (Lights,gOutdoor)     
+    [ "Switchable" ]     
+    { channel="mqtt:topic:myMQTTBroker:OtdoorBRPL0:PowerSwitch", autoupdate="true" }
+
+Switch OtdoorBRPL0_State
+    "State"
+    (gOtdoorBRPL0SWInfo)
+    { channel="mqtt:topic:myMQTTBroker:OtdoorBRPL0:state" }
+
+String OtdoorBRPL0_Version
+    "Version [%s]"
+    (gOtdoorBRPL0SWInfo)
+    { channel="mqtt:topic:myMQTTBroker:OtdoorBRPL0:Version" }
+
+Number OtdoorBRPL0_Vcc
+    "VCC  [%s]"
+    (gOtdoorBRPL0SWInfo) 
+    { channel="mqtt:topic:myMQTTBroker:OtdoorBRPL0:vcc" }
+
+String OtdoorBRPL0_hostname
+    "Hostname [%s]"
+    (gOtdoorBRPL0SWInfo)
+    { channel="mqtt:topic:myMQTTBroker:OtdoorBRPL0:hostname" }
+
+String OtdoorBRPL0_ipaddress
+    "IP Address [%s]"
+    (gOtdoorBRPL0SWInfo)
+    { channel="mqtt:topic:myMQTTBroker:OtdoorBRPL0:ipaddress" }
+
+String OtdoorBRPL0_WifiRssi
+    "WiFi Signal Strength [%s]"
+    (gOtdoorBRPL0SWInfo)
+    { channel="mqtt:topic:myMQTTBroker:OtdoorBRPL0:wifi-rssi" }
+
+String OtdoorBRPL0_WifiAp
+    "Wifi AP  [%s]"
+    (gOtdoorBRPL0SWInfo)
+    { channel="mqtt:topic:myMQTTBroker:OtdoorBRPL0:wifi-ap" }
+
+String OtdoorBRPL0_wifiSSId
+    "Wifi SSID  [%s]"
+    (gOtdoorBRPL0SWInfo)
+    { channel="mqtt:topic:myMQTTBroker:OtdoorBRPL0:wifi-SSId" }
+
+String OtdoorBRPL0_macaddress
+    "Mac Address [%s]"
+    (gOtdoorBRPL0SWInfo)
+    { channel="mqtt:topic:myMQTTBroker:OtdoorBRPL0:macaddress" }
+
+String OtdoorBRPL0_DeviceState
+    "Device State"
+    (gOtdoorBRPL0SWInfo)
+    { channel="mqtt:topic:myMQTTBroker:OtdoorBRPL0:devicestate" }
+//End
+
+//Wash Room Light
+Switch WashRML_Switch
+    "Wash Room Light"
+    (Lights)
+    [ "Switchable" ]
+    { channel="mqtt:topic:myMQTTBroker:WashRML:PowerSwitch", autoupdate="true" }
+
+Switch WashRML_State
+    "State"
+    (gWashRMLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:WashRML:state" }
+
+String WashRML_Version
+    "Version [%s]"
+    (gWashRMLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:WashRML:Version" }
+
+Number WashRML_Vcc
+    "VCC  [%s]"
+    (gWashRMLSWInfo) 
+    { channel="mqtt:topic:myMQTTBroker:WashRML:vcc" }
+
+String WashRML_hostname
+    "Hostname [%s]"
+    (gWashRMLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:WashRML:hostname" }
+
+String WashRML_ipaddress
+    "IP Address [%s]"
+    (gWashRMLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:WashRML:ipaddress" }
+
+String WashRML_WifiRssi
+    "WiFi Signal Strength [%s]"
+    (gWashRMLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:WashRML:wifi-rssi" }
+
+String WashRML_WifiAp
+    "Wifi AP  [%s]"
+    (gWashRMLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:WashRML:wifi-ap" }
+
+String WashRML_wifiSSId
+    "Wifi SSID  [%s]"
+    (gWashRMLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:WashRML:wifi-SSId" }
+
+String WashRML_macaddress
+    "Mac Address [%s]"
+    (gWashRMLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:WashRML:macaddress" }
+
+String WashRML_DeviceState
+    "Device State"
+    (gWashRMLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:WashRML:devicestate" }
+//End
+
+//Hallway Light
+Switch HallWL_Switch
+    "Hallway Light"
+    (Lights)
+    [ "Switchable" ]
+    { channel="mqtt:topic:myMQTTBroker:HallWL:PowerSwitch", autoupdate="true" }
+
+Switch HallWL_State
+    "State"
+    (gHallWLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:HallWL:state" }
+
+String HallWL_Version
+    "Version [%s]"
+    (gHallWLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:HallWL:Version" }
+
+Number HallWL_Vcc
+    "VCC  [%s]"
+    (gHallWLSWInfo) 
+    { channel="mqtt:topic:myMQTTBroker:HallWL:vcc" }
+
+String HallWL_hostname
+    "Hostname [%s]"
+    (gHallWLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:HallWL:hostname" }
+
+String HallWL_ipaddress
+    "IP Address [%s]"
+    (gHallWLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:HallWL:ipaddress" }
+
+String HallWL_WifiRssi
+    "WiFi Signal Strength [%s]"
+    (gHallWLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:HallWL:wifi-rssi" }
+
+String HallWL_WifiAp
+    "Wifi AP  [%s]"
+    (gHallWLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:HallWL:wifi-ap" }
+
+String HallWL_wifiSSId
+    "Wifi SSID  [%s]"
+    (gHallWLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:HallWL:wifi-SSId" }
+
+String HallWL_macaddress
+    "Mac Address [%s]"
+    (gHallWLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:HallWL:macaddress" }
+
+String HallWL_DeviceState
+    "Device State"
+    (gHallWLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:HallWL:devicestate" }
+
+//End
+
+//Passage Light
+Switch PassageL_Switch
+    "Passage Light"
+    (Lights)
+    [ "Switchable" ]
+    { channel="mqtt:topic:myMQTTBroker:PassageL:PowerSwitch", autoupdate="true" }
+
+Switch PassageL_State
+    "State"
+    (gPassageLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:PassageL:state" }
+
+String PassageL_Version
+    "Version [%s]"
+    (gPassageLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:PassageL:Version" }
+
+Number PassageL_Vcc
+    "VCC  [%s]"
+    (gPassageLSWInfo) 
+    { channel="mqtt:topic:myMQTTBroker:PassageL:vcc" }
+
+String PassageL_hostname
+    "Hostname [%s]"
+    (gPassageLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:PassageL:hostname" }
+
+String PassageL_ipaddress
+    "IP Address [%s]"
+    (gPassageLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:PassageL:ipaddress" }
+
+String PassageL_WifiRssi
+    "WiFi Signal Strength [%s]"
+    (gPassageLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:PassageL:wifi-rssi" }
+
+String PassageL_WifiAp
+    "Wifi AP  [%s]"
+    (gPassageLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:PassageL:wifi-ap" }
+
+String PassageL_wifiSSId
+    "Wifi SSID  [%s]"
+    (gPassageLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:PassageL:wifi-SSId" }
+
+String PassageL_macaddress
+    "Mac Address [%s]"
+    (gPassageLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:PassageL:macaddress" }
+
+String PassageL_DeviceState
+    "Device State"
+    (gPassageLSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:PassageL:devicestate" }
+
+//End
+
+//Gate Switch
+Switch Gate_Switch
+    "Gate"
+    [ "Switchable" ]
+    { channel="mqtt:topic:myMQTTBroker:gate:PowerSwitch", autoupdate="false" }
+
+Switch Gate_State
+    "State"
+    (gGateSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:Gate:state" }
+
+String Gate_Version
+    "Version [%s]"
+    (gGateSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:Gate:Version" }
+
+Number Gate_Vcc
+    "VCC  [%s]"
+    (gGateSWInfo) 
+    { channel="mqtt:topic:myMQTTBroker:Gate:vcc" }
+
+String Gate_hostname
+    "Hostname [%s]"
+    (gGateSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:Gate:hostname" }
+
+String Gate_ipaddress
+    "IP Address [%s]"
+    (gGateSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:Gate:ipaddress" }
+
+String Gate_WifiRssi
+    "WiFi Signal Strength [%s]"
+    (gGateSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:Gate:wifi-rssi" }
+
+String Gate_WifiAp
+    "Wifi AP  [%s]"
+    (gGateSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:Gate:wifi-ap" }
+
+String Gate_wifiSSId
+    "Wifi SSID  [%s]"
+    (gGateSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:Gate:wifi-SSId" }
+
+String Gate_macaddress
+    "Mac Address [%s]"
+    (gGateSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:Gate:macaddress" }
+
+String Gate_DeviceState
+    "Device State"
+    (gGateSWInfo)
+    { channel="mqtt:topic:myMQTTBroker:Gate:devicestate" }
+//End
+
+//Sonoff Action
+Switch UpdateStatus
+    "Update"
+//End
+
+//Switch dummy "Dummy Switch"
+

@@ -1,0 +1,16 @@
+rule "All lights off"
+when
+    Time cron "0 40 5 1/1 * ? *"
+then
+    Lights.sendCommand("OFF")
+    logInfo("info","all lights off rule fired")
+end
+
+rule "Some lights on"
+when
+    Time cron "0 30 19 1/1 * ? *"
+then
+    gOutdoor.sendCommand("ON")
+    gKitchen.sendCommand("ON")
+    logInfo("info","all lights on rule fired")
+end

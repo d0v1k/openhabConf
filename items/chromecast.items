@@ -1,0 +1,5 @@
+//Google Chromecast
+Dimmer ChromecastVolume "Volume" <soundvolume> [ "Switchable" ] { channel="chromecast:chromecast:4b0a68dfed6e57921ab6b0218da5e102:volume" }
+Player ChromecastControl "Control" <mediacontrol> { channel="chromecast:chromecast:4b0a68dfed6e57921ab6b0218da5e102:control" }
+
+

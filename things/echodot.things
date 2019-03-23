@@ -1,0 +1,4 @@
+Bridge amazonechocontrol:account:account1 "Amazon Account" @ "Accounts" 
+{
+    Thing echo                 echo1          "Alexa" @ "Living Room" [serialNumber="G090U50784470SD8"]
+}
