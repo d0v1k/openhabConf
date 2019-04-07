@@ -665,7 +665,7 @@ String PassageL_DeviceState
 Switch Gate_Switch
     "Gate"
     [ "Switchable" ]
-    { channel="mqtt:topic:myMQTTBroker:gate:PowerSwitch", autoupdate="false" }
+    { channel="mqtt:topic:myMQTTBroker:gate:switch", autoupdate="false" }
 
 Switch Gate_State
     "State"

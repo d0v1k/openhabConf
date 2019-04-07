@@ -709,8 +709,8 @@ Bridge mqtt:broker:myMQTTBroker
             "Power Switch"          
             [ stateTopic="stat/gate/POWER", 
             commandTopic="cmnd/gate/POWER", 
-            on="OPEN", 
-            off="CLOSE" ]
+            on="ON", 
+            off="OFF" ]
 
           Type switch : state
             "Switch State"

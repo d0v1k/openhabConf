@@ -1,0 +1,24 @@
+rule "Aircon"
+  when
+     Item LVAircon received command
+  then
+
+        //while(Remote_Send.state == ON){
+            //Thread::sleep(500)
+        //}
+
+        //if(LVAircon.state == ON){
+	    if(receivedCommand == ON){
+                Remote_Send_Args.sendCommand("AirconON")
+        }else{ 
+                Remote_Send_Args.sendCommand("AirconOFF")
+        }
+
+        // wait for the command to complete
+        while(Remote_Send.state != ON){
+            Thread::sleep(100)
+        }
+
+        Thread::sleep(400)
+        logInfo("Aircon", "Resuts are: \n" + Remote_Send_Out.state )
+end

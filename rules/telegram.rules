@@ -1,0 +1,13 @@
+rule "Status of Fadzani"
+when
+   Item HUAWEI_P8_lite changed from ON to OFF
+then
+   sendTelegram("Home", "Fadzani is Leaving")
+end
+
+rule "Status of Fadzani2"
+when
+   Item HUAWEI_P8_lite changed from OFF to ON
+then
+   sendTelegram("Home", "Fadzani is at Home")
+end

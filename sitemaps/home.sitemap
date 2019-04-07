@@ -15,13 +15,20 @@ sitemap home label="My Home"
             }
        	}
         Text label="Presence" icon="motion" {
-            Text        item=homeDistanceLM icon=dhouse
-    	    Switch      item=atWorkLM icon=office
-    	    Switch      item=atHomeLM icon=presence
-    	    Text        item=lastSeenLM
-    	    Text        item=batteryLM icon=batterylevel
-    	    Text        item=accuracyLM icon=gpsaccu
-    	    Mapview     item=locationLM height=4 icon=map
+		Frame label="Dovik" {
+            	    Text        item=homeDistanceLM icon=dhouse
+    	    	    Switch      item=atWorkLM icon=office
+    	            Switch      item=atHomeLM icon=presence
+    	    	    Text        item=lastSeenLM
+    	            Text        item=batteryLM icon=batterylevel
+    	            Text        item=accuracyLM icon=gpsaccu
+    	            Mapview     item=locationLM height=4 icon=map
+		}
+		 Frame label="Fadzani" {
+		    Switch item=HUAWEI_P8_lite label="Huawei P8 Lite [%s]"
+		    Text item=HUAWEI_P8_lite_lastSeen label="Last Seen [%s]"
+                    Text item=HUAWEI_P8_lite_ResponseTime label="Device Response Time [%s]"
+		 }
 	    }
     }
 
@@ -35,12 +42,24 @@ sitemap home label="My Home"
             Text      item=Echo_Living_Room_Title
             Text      item=Echo_Living_Room_Subtitle1
             Text      item=Echo_Living_Room_Subtitle2
+            Text      item=Echo_Living_Room_BluetoothMAC
+            // Change the <YOUR_DEVICE_MAC> Place holder with the MAC address shown, if alexa is connected to the device
+            Selection item=Echo_Living_Room_BluetoothMAC mappings=[ ''='Disconnected', '10:48:B1:D0:FD:82'='Mi TV - Living room']
+
 	}	
         Text label="Google Chromecast" icon="google" {
             Default   item=ChromecastControl
             Slider    item=ChromecastVolume icon=soundvolume
         }
     }
+
+    Frame label="Remote Control"
+        {
+            Text label="Aircon" icon="climate-off"
+            {
+		        Switch item=LVAircon label="Aircon" 
+            }
+        }
 
     Frame label="All Groups" {
         Switch item=Lights mappings=[OFF="All Off", ON="All On"]

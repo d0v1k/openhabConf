@@ -5,6 +5,11 @@ Number          batteryLM       "Battery level"         {channel="gpstracker:tra
 Number:Length   accuracyLM      "GPS Accuracy [%d m]"   {channel="gpstracker:tracker:LM:gpsAccuracy"}
 Number          homeDistanceLM  "Distance From Home"    {channel="gpstracker:tracker:LM:homeDistance"}
 Number          workDistanceLM  "Distance From Work"    {channel="gpstracker:tracker:LM:workDistance"}
+//Fadzani
+Switch 		HUAWEI_P8_lite  "Fadzani Phone"		{ channel="network:pingdevice:11bc47c6:online" }
+DateTime	HUAWEI_P8_lite_lastSeen	"Fadzani Last seen"     { channel="network:pingdevice:11bc47c6:lastseen" }
+Number 		HUAWEI_P8_lite_ResponseTime "Ping Latency"	{ channel="network:pingdevice:11bc47c6:latency" }
+
 
 //linking switch item to regionTrigger channel. assuming the Home distance channel is defined in the binding config (see above)
 Switch atHomeLM "Home presence" {channel="gpstracker:tracker:LM:regionTrigger" [profile="gpstracker:trigger-geofence", regionName="Home"]}

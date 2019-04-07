@@ -1,0 +1,1 @@
+Thing exec:command:remote-send [command="/usr/bin/python /usr/share/openhab2/exec/BlackBeanControl/BlackBeanControl.py -c %2$s", interval=0, timeout=5, autorun=true]

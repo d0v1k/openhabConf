@@ -1,0 +1,5 @@
+Switch LVAircon <"player"> [ "Switchable" ]
+
+Switch Remote_Send      { channel="exec:command:remote-send:run" }
+String Remote_Send_Args { channel="exec:command:remote-send:input" }
+String Remote_Send_Out  { channel="exec:command:remote-send:output" }
