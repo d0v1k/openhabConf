@@ -1,8 +1,10 @@
 //active groups
 Group:Switch:OR(ON, OFF)    Lights              "All Lights [(%d)]"           [ "Switchable" ]
+Group:Switch:OR(ON, OFF)    gIndoor             "Indoor Lights [(%d)]"       [ "Switchable" ]
 Group:Switch:OR(ON, OFF)    gOutdoor            "Outdoor Lights [(%d)]"       [ "Switchable" ]
 Group:Switch:OR(ON, OFF)    gKitchen            "Kitchen Lights [(%d)]"       [ "Switchable" ]
 Group:Switch:OR(ON, OFF)    gLounge             "Living Room Lights [(%d)]"   [ "Switchable" ]
+
 
 Group			    gVerandaSWInfo	"Veranda Switch Info"
 Group                       gOtdoorKTLSWInfo    "Outdoor Kitchen Switch Info"
@@ -16,7 +18,7 @@ Group                       gWashRMLSWInfo      "Wash Room Light"
 Group                       gHallWLSWInfo       "Hallway Light"
 Group                       gPassageLSWInfo     "Passage Light"
 Group                       gGateSWInfo         "Gate"
-
+Group                       grfbridge01SWInfo   "Sonoff Bridge 01"
 
 //Veranda Light
 Switch veranda01_Switch
@@ -139,7 +141,7 @@ String OtdoorKTL_DeviceState
 //Kitchen Counter Light
 Switch CounterKTL_Switch         
     "Kitchen Counter Light"        
-    (Lights,gKitchen)     
+    (Lights,gKitchen,gIndoor)     
     [ "Switchable" ]     
     { channel="mqtt:topic:myMQTTBroker:CounterKTL:PowerSwitch", autoupdate="true" }
 
@@ -197,7 +199,7 @@ String CounterKTL_DeviceState
 //Kitchen Sink Light
 Switch SinkKTL_Switch            
     "Kitchen Sink Light"         	
-    (Lights,gKitchen)     
+    (Lights,gKitchen,gIndoor)     
     [ "Switchable" ]     
     { channel="mqtt:topic:myMQTTBroker:SinkKTL:PowerSwitch", autoupdate="true" }
 
@@ -256,7 +258,7 @@ String SinkKTL_DeviceState
 //Living Room Light
 Switch LivingRML0_Switch
     "Lounge Light"
-    (Lights,gLounge)
+    (Lights,gLounge,gIndoor)
     [ "Switchable" ]
     { channel="mqtt:topic:myMQTTBroker:LivingRML0:PowerSwitch", autoupdate="true" }
 
@@ -314,7 +316,7 @@ String LivingRML0_DeviceState
 //Living Room Light
 Switch LivingRML1_Switch         
     "Living Room Light"          
-    (Lights,gLounge)     
+    (Lights,gLounge,gIndoor)     
     [ "Switchable" ]     
     { channel="mqtt:topic:myMQTTBroker:LivingRML1:PowerSwitch", autoupdate="true" }
 
@@ -488,7 +490,7 @@ String OtdoorBRPL0_DeviceState
 //Wash Room Light
 Switch WashRML_Switch
     "Wash Room Light"
-    (Lights)
+    (Lights,gIndoor)
     [ "Switchable" ]
     { channel="mqtt:topic:myMQTTBroker:WashRML:PowerSwitch", autoupdate="true" }
 
@@ -546,7 +548,7 @@ String WashRML_DeviceState
 //Hallway Light
 Switch HallWL_Switch
     "Hallway Light"
-    (Lights)
+    (Lights,gIndoor)
     [ "Switchable" ]
     { channel="mqtt:topic:myMQTTBroker:HallWL:PowerSwitch", autoupdate="true" }
 
@@ -605,7 +607,7 @@ String HallWL_DeviceState
 //Passage Light
 Switch PassageL_Switch
     "Passage Light"
-    (Lights)
+    (Lights,gIndoor)
     [ "Switchable" ]
     { channel="mqtt:topic:myMQTTBroker:PassageL:PowerSwitch", autoupdate="true" }
 
@@ -724,4 +726,54 @@ Switch UpdateStatus
 //End
 
 //Switch dummy "Dummy Switch"
+
+/////////////////////////////////////////////////////////
+
+//Sonoff Bridge 01
+String rfbridge01_Version
+    "Version [%s]"
+    (grfbridge01SWInfo)
+    { channel="mqtt:topic:myMQTTBroker:rfbridge01:Version" }
+
+Number rfbridge01_Vcc
+    "VCC  [%s]"
+    (grfbridge01SWInfo)
+    { channel="mqtt:topic:myMQTTBroker:rfbridge01:vcc" }
+
+String rfbridge01_hostname
+    "Hostname [%s]"
+    (grfbridge01SWInfo)
+    { channel="mqtt:topic:myMQTTBroker:rfbridge01:hostname" }
+
+String rfbridge01_ipaddress
+    "IP Address [%s]"
+    (grfbridge01SWInfo)
+    { channel="mqtt:topic:myMQTTBroker:rfbridge01:ipaddress" }
+
+String rfbridge01_WifiRssi
+    "WiFi Signal Strength [%s]"
+    (grfbridge01SWInfo)
+    { channel="mqtt:topic:myMQTTBroker:rfbridge01:wifi-rssi" }
+
+String rfbridge01_WifiAp
+    "Wifi AP  [%s]"
+    (grfbridge01SWInfo)
+    { channel="mqtt:topic:myMQTTBroker:rfbridge01:wifi-ap" }
+
+String rfbridge01_wifiSSId
+    "Wifi SSID  [%s]"
+    (grfbridge01SWInfo)
+    { channel="mqtt:topic:myMQTTBroker:rfbridge01:wifi-SSId" }
+
+String rfbridge01_macaddress
+    "Mac Address [%s]"
+    (grfbridge01SWInfo)
+    { channel="mqtt:topic:myMQTTBroker:rfbridge01:macaddress" }
+
+String rfbridge01_DeviceState
+    "Device State"
+    (grfbridge01SWInfo)
+    { channel="mqtt:topic:myMQTTBroker:rfbridge01:devicestate" }
+
+//End
 

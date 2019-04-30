@@ -22,3 +22,63 @@ rule "Aircon"
         Thread::sleep(400)
         logInfo("Aircon", "Resuts are: \n" + Remote_Send_Out.state )
 end
+
+rule "Heater Max"
+    when
+        Item HMax received command
+    then
+
+        if(receivedCommand == ON){
+            HeaterMAX.sendCommand(ON)
+        }
+end
+
+rule "Heater 25"
+    when
+        Item H25 received command
+    then
+
+        if(receivedCommand == ON){
+            Heater25.sendCommand(ON)
+        }
+end
+
+rule "Heater Low"
+    when
+        Item HLow received command
+    then
+
+        if(receivedCommand == ON){
+            HeaterLOW.sendCommand(ON)
+        }
+end
+
+rule "Aircon Fan"
+    when
+        Item AFan received command
+    then
+
+        if(receivedCommand == ON){
+            ACFAN.sendCommand(ON)
+        }
+end
+
+rule "Aircon Auto"
+    when
+        Item Aauto received command
+    then
+
+        if(receivedCommand == ON){
+            ACAUTO.sendCommand(ON)
+        }
+end
+
+rule "Aircon Off"
+    when
+        Item ACOff received command
+    then
+
+        if(receivedCommand == ON){
+            AirconOFF.sendCommand(ON)
+        }
+end

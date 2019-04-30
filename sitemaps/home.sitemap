@@ -14,6 +14,15 @@ sitemap home label="My Home"
                     Switch item=SpeedtestRerun mappings=[ON="Start"]
             }
        	}
+
+        Text label="Server Status" icon="server" {
+                Frame label="Andromeda" {
+		    Switch item=andromeda_srv
+                    Text item=andromeda_status icon="status" label="Device [%s]"
+		    Text item=andromedaResponseTime label="Device Response Time [%s]"
+                }
+        }
+
         Text label="Presence" icon="motion" {
 		Frame label="Dovik" {
             	    Text        item=homeDistanceLM icon=dhouse
@@ -24,12 +33,13 @@ sitemap home label="My Home"
     	            Text        item=accuracyLM icon=gpsaccu
     	            Mapview     item=locationLM height=4 icon=map
 		}
-		 Frame label="Fadzani" {
-		    Switch item=HUAWEI_P8_lite label="Huawei P8 Lite [%s]"
-		    Text item=HUAWEI_P8_lite_lastSeen label="Last Seen [%s]"
-                    Text item=HUAWEI_P8_lite_ResponseTime label="Device Response Time [%s]"
-		 }
+		 //Frame label="Fadzani" {
+		    //Switch item=HUAWEI_P8_lite label="Huawei P8 Lite [%s]"
+		    //Text item=HUAWEI_P8_lite_lastSeen label="Last Seen [%s]"
+                    //Text item=HUAWEI_P8_lite_ResponseTime label="Device Response Time [%s]"
+		 //}
 	    }
+
     }
 
     Frame label="Living Room" {
@@ -57,12 +67,20 @@ sitemap home label="My Home"
         {
             Text label="Aircon" icon="climate-off"
             {
-		        Switch item=LVAircon label="Aircon" 
+		        Switch item=LVAircon label="Aircon"
+                Switch item=HMax label="Heater Max" mappings=[ON="Set"]
+                Switch item=H25 label="Heater 25" mappings=[ON="Set"]
+                Switch item=HLow label="Heater Low" mappings=[ON="Set"]
+                Switch item=AFan label="FAN" mappings=[ON="Set"]
+                Switch item=Aauto label="AUTO" mappings=[ON="Set"]
+                Switch item=ACOff label="OFF" mappings=[ON="Set"]
+
             }
         }
 
     Frame label="All Groups" {
         Switch item=Lights mappings=[OFF="All Off", ON="All On"]
+        Switch item=gIndoor mappings=[OFF="All Off", ON="All On"]
         Switch item=gOutdoor mappings=[OFF="All Off", ON="All On"]
         Switch item=gKitchen mappings=[OFF="All Off", ON="All On"]
         Switch item=gLounge mappings=[OFF="All Off", ON="All On"] 
@@ -99,6 +117,7 @@ sitemap home label="My Home"
 		        Group  item=gHallWLSWInfo
 		        Group  item=gPassageLSWInfo
 		        Group  item=gGateSWInfo
+			Group  item=grfbridge01SWInfo
 		        Switch item=UpdateStatus mappings=[ON="Start"]
             }
         }

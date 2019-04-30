@@ -1,1 +1,7 @@
 Thing exec:command:remote-send [command="/usr/bin/python /usr/share/openhab2/exec/BlackBeanControl/BlackBeanControl.py -c %2$s", interval=0, timeout=5, autorun=true]
+Thing exec:command:HeaterMAX [command="/usr/bin/python /usr/share/openhab2/exec/BlackBeanControl/BlackBeanControl.py -c HeaterMAX", interval=0, timeout=5, autorun=false]
+Thing exec:command:Heater25 [command="/usr/bin/python /usr/share/openhab2/exec/BlackBeanControl/BlackBeanControl.py -c Heater25", interval=0, timeout=5, autorun=false]
+Thing exec:command:HeaterLOW [command="/usr/bin/python /usr/share/openhab2/exec/BlackBeanControl/BlackBeanControl.py -c HeaterLOW", interval=0, timeout=5, autorun=false]
+Thing exec:command:ACFAN [command="/usr/bin/python /usr/share/openhab2/exec/BlackBeanControl/BlackBeanControl.py -c ACFAN", interval=0, timeout=5, autorun=false]
+Thing exec:command:ACAUTO [command="/usr/bin/python /usr/share/openhab2/exec/BlackBeanControl/BlackBeanControl.py -c ACAUTO", interval=0, timeout=5, autorun=false]
+Thing exec:command:AirconOFF [command="/usr/bin/python /usr/share/openhab2/exec/BlackBeanControl/BlackBeanControl.py -c AirconOFF", interval=0, timeout=5, autorun=false]

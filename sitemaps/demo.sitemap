@@ -1,0 +1,15 @@
+sitemap demo label="OpenWeatherMap" {
+    Frame label="Current local weather" {
+        Text item=localLastMeasurement
+        Text item=localCurrentCondition
+        Image item=localCurrentConditionIcon
+        Text item=localCurrentTemperature
+        Text item=localCurrentPressure
+        Text item=localCurrentHumidity
+        Text item=localCurrentWindSpeed
+        Text item=localCurrentWindDirection
+        Text item=localCurrentCloudiness
+        Text item=localCurrentRainVolume
+        Text item=localCurrentSnowVolume
+    }
+}

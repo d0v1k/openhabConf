@@ -1,6 +1,7 @@
+//https://www.freeformatter.com/cron-expression-generator-quartz.html
 rule "All lights off"
 when
-    Time cron "0 40 5 1/1 * ? *"
+    Time cron "0 30 6 1/1 * ? *"
 then
     Lights.sendCommand("OFF")
     logInfo("info","all lights off rule fired")
@@ -8,9 +9,18 @@ end
 
 rule "Some lights on"
 when
-    Time cron "0 30 19 1/1 * ? *"
+    Time cron "0 30 18 1/1 * ? *"
 then
     gOutdoor.sendCommand("ON")
-    gKitchen.sendCommand("ON")
-    logInfo("info","all lights on rule fired")
+    //gKitchen.sendCommand("ON")
+    logInfo("info","Outdoor Lights on rule fired")
 end
+
+rule "Turn off Indoor Lights"
+when
+    Time cron "0 30 22 1/1 * ? *"
+then
+    gIndoor.sendCommand("OFF")
+    logInfo("info","all lights off rule fired")
+end
+

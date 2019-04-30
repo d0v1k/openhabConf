@@ -4,7 +4,6 @@
 //then
 //Echo_Living_Room_TTS.sendCommand('Hi, Turn the switch back ON')
 //end
-/*
 rule "door opening"
 
     when
@@ -14,5 +13,5 @@ rule "door opening"
     then
 
             Echo_Living_Room_TTS.sendCommand('Gate Switch has been triggered')
+            sendTelegram("Home", "Gate Switch has been triggered")
 end
-*/

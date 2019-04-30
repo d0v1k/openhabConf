@@ -1,5 +1,18 @@
 Switch LVAircon <"player"> [ "Switchable" ]
+Switch HMax <"player"> [ "Switchable" ]
+Switch H25 <"player"> [ "Switchable" ]
+Switch HLow <"player"> [ "Switchable" ]
+Switch AFan <"player"> [ "Switchable" ]
+Switch Aauto <"player"> [ "Switchable" ]
+Switch ACOff <"player"> [ "Switchable" ]
 
 Switch Remote_Send      { channel="exec:command:remote-send:run" }
 String Remote_Send_Args { channel="exec:command:remote-send:input" }
 String Remote_Send_Out  { channel="exec:command:remote-send:output" }
+
+Switch HeaterMAX  { channel="exec:command:HeaterMAX:run" }
+Switch Heater25   { channel="exec:command:Heater25:run" }
+Switch HeaterLOW  { channel="exec:command:HeaterLOW:run" }
+Switch ACFAN      { channel="exec:command:ACFAN:run" }
+Switch ACAUTO     { channel="exec:command:ACAUTO:run" }
+Switch AirconOFF  { channel="exec:command:AirconOFF:run" }

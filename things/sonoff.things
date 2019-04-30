@@ -764,4 +764,88 @@ Bridge mqtt:broker:myMQTTBroker
             [ stateTopic="tele/gate/LWT" ]
     }
     // end of thing
+
+///////////////////////////////////////////////////////////////////////
+
+    //Lounge Sonoff PiR 01
+    Thing topic rfbridge01 "Sonoff Bridge 01"
+    {
+      Channels:
+          Type string : recieveddata  
+	    "Received Data"        
+	    [ stateTopic="tele/rfbridge01/RESULT", 
+            transformationPattern="JSONPATH:$.RfReceived.Data"]
+
+          Type string : recievedsync  
+	    "Received Sync"        
+            [ stateTopic="tele/rfbridge01/RESULT", 
+            transformationPattern="JSONPATH:$.RfReceived.Sync"]
+
+          Type string : recievedlow   
+            "Received Low"         
+            [ stateTopic="tele/rfbridge01/RESULT", 
+            transformationPattern="JSONPATH:$.RfReceived.Low"]
+
+          Type string : recievedhigh  
+	    "Received High"        
+            [ stateTopic="tele/rfbridge01/RESULT", 
+            transformationPattern="JSONPATH:$.RfReceived.High"]
+
+          Type string : recievedrfkey 
+            "Received RfKey"       
+            [ stateTopic="tele/rfbridge01/RESULT", 
+            transformationPattern="JSONPATH:$.RfReceived.RfKey"]
+
+          Type switch : button1       
+            "Button 1"             
+            [ stateTopic="stat/rfbridge01/RESULT", 
+            commandTopic="cmnd/rfbridge01/RFKEY1", transformationPattern="JSONPATH:$.RfKey1" ]
+
+          Type string : Version
+            "Firmware Version"
+            [ stateTopic="stat/rfbridge01/STATUS2",  
+            transformationPattern="JSONPATH:$.StatusFWR.Version"]
+
+          Type number : vcc
+            "VCC"
+            [ stateTopic="tele/rfbridge01/STATE", 
+            transformationPattern="JSONPATH:$.Vcc"  ]
+
+          Type string : hostname
+            "Hostname"
+            [ stateTopic="stat/rfbridge01/STATUS5",
+            transformationPattern="JSONPATH:$.StatusNET.Hostname" ]
+
+          Type string : ipaddress
+            "IP Address"
+            [ stateTopic="stat/rfbridge01/STATUS5",
+            transformationPattern="JSONPATH:$.StatusNET.IPAddress" ]
+
+          Type string : wifi-rssi
+            "Wifi RSSI"
+            [ stateTopic="tele/rfbridge01/STATE",
+            transformationPattern="JSONPATH:$.Wifi.RSSI" ]
+
+          Type string : wifi-ap
+            "Wifi AP"
+            [ stateTopic="tele/rfbridge01/STATE", 
+            transformationPattern="JSONPATH:$.Wifi.AP" ]
+
+          Type string : wifi-SSId
+            "Wifi SSID"
+            [ stateTopic="tele/rfbridge01/STATE",
+            transformationPattern="JSONPATH:$.Wifi.SSId" ]
+
+          Type string : macaddress
+            "Mac Address"
+            [ stateTopic="stat/rfbridge01/STATUS5",
+            transformationPattern="JSONPATH:$.StatusNET.Mac" ]
+
+          Type string : devicestate
+            "Device State"
+            [ stateTopic="tele/rfbridge01/LWT" ]
+    }
+    // end of thing
+
+
 }
